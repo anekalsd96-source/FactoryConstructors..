@@ -117,7 +117,7 @@ void main() {
   notif.send('Halo pengguna Android');
 }
 ```
-[Klik di sini untuk menjalankan kode DartPad](https://dartpad.dev/9b4b28b1108d5fb1e02546d99409f402)
+[Klik di sini untuk menjalankan kode DartPad](https://dartpad.dev/bc031434fd93090545d456f7aa5a1a83)
 ---
 
 ### 3. ShapeFactory dengan Cache
