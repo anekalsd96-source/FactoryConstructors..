@@ -177,3 +177,182 @@ void main() {
 ```
 [Klik di sini untuk menjalankan kode DartPad](https://dartpad.dev/d79c23ce03a57299795b9b4447006385)
 ---
+## Berikutnya animali Factory dengan :
+### Vactory
+### Validation
+### Chace
+### Subclass Selection
+
+```dart
+abstract class Animal {
+  String name;
+  int age;
+  String category;
+
+  Animal(this.name, this.age, this.category);
+
+  void sound();
+}
+
+// ================= FACTORY =================
+
+class AnimalFactory {
+
+  // Cache
+  static final Map<String, Animal> _cache = {};
+
+  static Animal createAnimal(
+    String type,
+    String name,
+    int age,
+    String category,
+  ) {
+
+    // ================= VALIDATION =================
+
+    if (name.isEmpty) {
+      throw ArgumentError('Nama tidak boleh kosong');
+    }
+
+    if (age < 0) {
+      throw ArgumentError('Umur tidak valid');
+    }
+
+    if (category.isEmpty) {
+      throw ArgumentError('Kategori tidak boleh kosong');
+    }
+
+    // Key cache
+    String key = '$type-$name-$age-$category';
+
+    // ================= CACHE =================
+
+    if (_cache.containsKey(key)) {
+      print('Mengambil hewan dari cache');
+      return _cache[key]!;
+    }
+
+    late Animal animal;
+
+    // ================= SUBCLASS SELECTION =================
+
+    switch (type.toLowerCase()) {
+
+      // Mamalia
+      case 'cat':
+        animal = Cat(name, age, category);
+        break;
+
+      case 'dog':
+        animal = Dog(name, age, category);
+        break;
+
+      // Unggas
+      case 'bird':
+        animal = Bird(name, age, category);
+        break;
+
+      // Hewan air
+      case 'fish':
+        animal = Fish(name, age, category);
+        break;
+
+      default:
+        throw ArgumentError('Jenis hewan tidak tersedia');
+    }
+
+    // Simpan ke cache
+    _cache[key] = animal;
+
+    return animal;
+  }
+}
+
+// ================= SUBCLASS =================
+
+// Mamalia
+class Cat extends Animal {
+  Cat(String name, int age, String category)
+      : super(name, age, category);
+
+  @override
+  void sound() {
+    print('$name ($category) berkata: Meow');
+  }
+}
+
+class Dog extends Animal {
+  Dog(String name, int age, String category)
+      : super(name, age, category);
+
+  @override
+  void sound() {
+    print('$name ($category) berkata: Woof');
+  }
+}
+
+// Unggas
+class Bird extends Animal {
+  Bird(String name, int age, String category)
+      : super(name, age, category);
+
+  @override
+  void sound() {
+    print('$name ($category) berkata: Tweet');
+  }
+}
+
+// Hewan Air
+class Fish extends Animal {
+  Fish(String name, int age, String category)
+      : super(name, age, category);
+
+  @override
+  void sound() {
+    print('$name ($category) berkata: Blub Blub');
+  }
+}
+
+// ================= MAIN =================
+
+void main() {
+
+  var cat1 = AnimalFactory.createAnimal(
+    'cat',
+    'Milo',
+    2,
+    'Mamalia',
+  );
+
+  var cat2 = AnimalFactory.createAnimal(
+    'cat',
+    'Milo',
+    2,
+    'Mamalia',
+  );
+
+  var bird = AnimalFactory.createAnimal(
+    'bird',
+    'Rio',
+    1,
+    'Unggas',
+  );
+
+  var fish = AnimalFactory.createAnimal(
+    'fish',
+    'Nemo',
+    1,
+    'Hewan Air',
+  );
+
+  // Test cache
+  print(identical(cat1, cat2));
+
+  // Output suara
+  cat1.sound();
+  bird.sound();
+  fish.sound();
+}
+```
+[Klik di sini untuk menjalankan kode DartPad](https://dartpad.dev/454861c2baee79060d5ee37f4bd94894)
+---
