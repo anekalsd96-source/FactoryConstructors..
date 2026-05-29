@@ -175,5 +175,5 @@ void main() {
   print(identical(s1, s2)); // true
 }
 ```
-[Klik di sini untuk menjalankan kode DartPad](https://dartpad.dev/454861c2baee79060d5ee37f4bd94894)
+[Klik di sini untuk menjalankan kode DartPad](https://dartpad.dev/bc031434fd93090545d456f7aa5a1a83)
 ---
