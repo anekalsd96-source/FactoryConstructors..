@@ -1,4 +1,5 @@
-# 📘Factory Constructors - Sesi 10
+# 📘LATIHAN
+## Factory Constructors - Sesi 10
 
 ## 👤 Identitas
 ### Nama       : Aneka Lisda 
@@ -177,7 +178,9 @@ void main() {
 ```
 [Klik di sini untuk menjalankan kode DartPad](https://dartpad.dev/d79c23ce03a57299795b9b4447006385)
 ---
-## Berikutnya animali Factory dengan :
+# 📘CHALLENGE
+
+## Berikut AnimalFactory dengan :
 ### Vactory
 ### Validation
 ### Chace
